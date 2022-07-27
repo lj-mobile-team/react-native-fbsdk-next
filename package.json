@@ -100,7 +100,7 @@
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
-    "@types/react": "^18.0.10",
+    "@types/react": "17.0.38",
     "@types/react-native": "^0.67.7",
     "@types/xml2js": "^0.4.11",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
