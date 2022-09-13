@@ -725,6 +725,8 @@ The plugin provides props for extra customization. Every time you change the pro
 - `advertiserIDCollectionEnabled` (_boolean_): Enable advertiser ID collection. Default `false`.
 - `autoLogAppEventsEnabled` (_boolean_): Default `false`.
 - `isAutoInitEnabled` (_boolean_): Default `false`.
+         
+> If you are migrating from `expo-facebook` to this library, it is important to consider that `clientToken` was not required in `expo-facebook`, but it is required here. You can get that value from "Facebook Developers > Your App > Configurations > Advanced".
 
 #### Example
 
@@ -746,6 +748,23 @@ The plugin provides props for extra customization. Every time you change the pro
       ]
     ]
   }
+}
+```
+
+## Enabling Auto App Installs in Expo
+To enable auto app installs in Expo, you need to set autoLogAppEventsEnabled and advertiserIDCollectionEnabled flags to **true** in your `app.json` or `app.config.js`.
+
+Moreover, on iOS you need user consent to collect user data. You can do this by adding the following code somewhere to your `App.tsx`:
+
+```js
+import { requestTrackingPermissionsAsync } from 'expo-tracking-transparency';
+
+const { status } = await requestTrackingPermissionsAsync(); 
+
+Settings.initializeSDK();
+
+if (status === 'granted') {
+    await Settings.setAdvertiserTrackingEnabled(true);
 }
 ```
 
